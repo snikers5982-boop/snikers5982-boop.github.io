@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Музей Лицея №84 — lycey84muzey</title>
-<meta name="description" content="Виртуальный музей Лицея №84: история, экспонаты, события и экскурсии.">
+<meta name="description" content="Виртуальный музей Лицея №84: экспонаты">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
@@ -66,7 +66,7 @@
   .hero {
     height: 100vh; min-height: 600px;
     background: linear-gradient(135deg, rgba(30,58,95,0.85), rgba(201,162,39,0.4)),
-                url('https://images.unsplash.com/photo-1564399579883-451a5d44ec08?w=1920') center/cover;
+                url('https://avatars.mds.yandex.net/i?id=5035234ec718eacacf2ce86cd423fa7e_l-8497218-images-thumbs&n=13') center/cover;
     display: flex; align-items: center; justify-content: center;
     text-align: center; color: white;
     padding: 0 20px;
