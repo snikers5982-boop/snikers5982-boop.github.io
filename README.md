@@ -1,596 +1,788 @@
 <html lang="ru">
-<head> 
-
+<head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Музей Лицея №84 — lycey84muzey</title>
-<meta name="description" content="Виртуальный музей Лицея №84: экспонаты">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b10">
+<title>Музей Лицея №84</title>
+<meta name="description" content="Виртуальный музей Лицея №84 — экспонаты, история, галерея и запись на экскурсию.">
 <style>
-      @media (max-width: 900px) {
-  nav ul { display: none; }
-  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-  section { padding: 70px 20px; }
+/* ============ БАЗА ============ */
+:root{
+  --bg:#0b0b10;
+  --bg2:#12121a;
+  --card:#16161f;
+  --line:rgba(255,255,255,.09);
+  --txt:#eceaf0;
+  --muted:#9a97a8;
+  --gold:#e0b25c;
+  --gold2:#f5d99a;
+  --violet:#7c5cff;
+  --radius:18px;
 }
-@media (max-width: 600px) {
-  .stats { grid-template-columns: 1fr; }
-  .event { flex-direction: column; text-align: center; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  background:var(--bg);color:var(--txt);line-height:1.65;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
 }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --primary: #1e3a5f;
-    --accent: #c9a227;
-    --light: #f5f2ec;
-    --dark: #1a1a1a;
-    --text: #333;
-  }
-  body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    color: var(--text);
-    line-height: 1.6;
-    background: var(--light);
-  }
-  h1, h2, h3 { font-family: 'Georgia', serif; color: var(--primary); }
-  a { color: var(--primary); text-decoration: none; transition: 0.3s; }
-  a:hover { color: var(--accent); }
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{max-width:100%;display:block}
+::selection{background:var(--gold);color:#0b0b10}
 
-  /* HEADER */
-  header {
-    position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(245, 242, 236, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-    z-index: 1000;
-    padding: 15px 0;
-  }
-  .nav-container {
-    max-width: 1200px; margin: 0 auto;
-    padding: 0 20px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .logo {
-    display: flex; align-items: center; gap: 12px;
-    font-size: 22px; font-weight: bold; color: var(--primary);
-  }
-  .logo-icon {
-    width: 45px; height: 45px;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 20px;
-  }
-  nav ul { display: flex; list-style: none; gap: 30px; }
-  nav a {
-    font-family: Arial, sans-serif;
-    font-size: 15px; font-weight: 500;
-    position: relative;
-  }
-  nav a::after {
-    content: ''; position: absolute;
-    bottom: -5px; left: 0; width: 0; height: 2px;
-    background: var(--accent); transition: 0.3s;
-  }
-  nav a:hover::after { width: 100%; }
+.wrap{width:min(1120px,calc(100% - 2.5rem));margin-inline:auto}
+section{padding:clamp(56px,9vw,110px) 0;position:relative}
+.h2{
+  font-size:clamp(1.7rem,5.5vw,2.9rem);
+  line-height:1.12;letter-spacing:-.025em;font-weight:800;margin-bottom:.6em;
+}
+.h2 em{font-style:normal;color:var(--gold)}
+.lead{color:var(--muted);font-size:clamp(.95rem,2.6vw,1.08rem);max-width:62ch}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.55rem;
+  font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;
+}
+.eyebrow::before{
+  content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);
+  box-shadow:0 0 0 4px rgba(224,178,92,.16);
+}
 
-  /* HERO */
-  .hero {
-    height: 100vh; min-height: 600px;
-    background: linear-gradient(135deg, rgba(30,58,95,0.85), rgba(201,162,39,0.4)),
-                url('https://avatars.mds.yandex.net/i?id=5035234ec718eacacf2ce86cd423fa7e_l-8497218-images-thumbs&n=13') center/cover;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; color: white;
-    padding: 0 20px;
-  }
-  .hero-content { max-width: 800px; animation: fadeUp 1.2s ease; }
-  .hero h1 {
-    font-size: clamp(36px, 6vw, 68px);
-    color: white; margin-bottom: 20px;
-    text-shadow: 2px 2px 20px rgba(0,0,0,0.4);
-    letter-spacing: 2px;
-  }
-  .hero p {
-    font-size: clamp(16px, 2vw, 22px);
-    margin-bottom: 35px; opacity: 0.95;
-    font-family: Arial, sans-serif;
-  }
-  .btn {
-    display: inline-block;
-    padding: 15px 40px;
-    background: var(--accent);
-    color: var(--dark);
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-size: 14px;
-    border-radius: 3px;
-    transition: 0.3s;
-    border: 2px solid var(--accent);
-  }
-  .btn:hover {
-    background: transparent; color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(201,162,39,0.4);
-  }
-  .btn-outline {
-    background: transparent; color: white;
-    margin-left: 15px;
-  }
-  .btn-outline:hover { background: var(--accent); color: var(--dark); }
+/* ============ НАВИГАЦИЯ ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,box-shadow .3s}
+.nav.scrolled{
+  background:rgba(11,11,16,.88);
+  box-shadow:0 1px 0 var(--line);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:.7rem;font-weight:800;font-size:.95rem}
+.logo-mark{
+  width:40px;height:40px;display:grid;place-items:center;border-radius:12px;
+  background:linear-gradient(145deg,var(--gold2),var(--gold));
+  color:#0b0b10;font-weight:900;font-size:.95rem;letter-spacing:-.02em;
+  box-shadow:0 6px 18px -6px rgba(224,178,92,.7);
+}
+.logo-txt{white-space:nowrap}
+.nav-links{display:flex;gap:4px;align-items:center}
+.nav-links a{
+  display:block;padding:.5rem .8rem;border-radius:10px;
+  font-size:.9rem;color:var(--muted);transition:color .2s,background .2s;
+}
+.nav-links a:hover{color:var(--txt);background:rgba(255,255,255,.06)}
+.nav-links .nav-cta{
+  margin-left:.4rem;background:linear-gradient(145deg,var(--gold2),var(--gold));
+  color:#0b0b10;font-weight:700;
+}
+.nav-links .nav-cta:hover{color:#0b0b10;background:linear-gradient(145deg,#fff,var(--gold2))}
 
-  /* SECTIONS */
-  section { padding: 100px 20px; }
-  .container { max-width: 1200px; margin: 0 auto; }
-  .section-title {
-    text-align: center;
-    font-size: clamp(28px, 4vw, 42px);
-    margin-bottom: 15px;
-    position: relative;
-    padding-bottom: 20px;
-  }
-  .section-title::after {
-    content: ''; position: absolute;
-    bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 80px; height: 3px;
-    background: var(--accent);
-  }
-  .section-subtitle {
-    text-align: center;
-    color: #666;
-    font-family: Arial, sans-serif;
-    margin-bottom: 60px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.burger{
+  display:none;width:44px;height:44px;border-radius:12px;
+  align-items:center;justify-content:center;flex-direction:column;gap:5px;
+  position:relative;z-index:2;
+}
+.burger span{
+  width:22px;height:2px;background:var(--txt);border-radius:2px;
+  transition:transform .3s,opacity .2s;
+}
+.burger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.active span:nth-child(2){opacity:0}
+.burger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-  /* ABOUT */
-  .about { background: white; }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-  .about-image {
-    aspect-ratio: 4/3;
-    background: url('https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=800') center/cover;
-    border-radius: 8px;
-    box-shadow: 20px 20px 0 var(--accent);
-    transition: 0.4s;
-  }
-  .about-image:hover { transform: translate(-5px, -5px); }
-  .about-text h3 { font-size: 28px; margin-bottom: 20px; }
-  .about-text p { margin-bottom: 15px; font-family: Arial, sans-serif; }
-  .stats {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 20px; margin-top: 40px;
-  }
-  .stat {
-    text-align: center;
-    padding: 20px;
-    background: var(--light);
-    border-radius: 8px;
-  }
-  .stat-num {
-    font-size: 36px; font-weight: bold;
-    color: var(--accent);
-    font-family: Georgia, serif;
-  }
-  .stat-label {
-    font-size: 13px; color: #666;
-    font-family: Arial, sans-serif;
-  }
+/* ============ HERO ============ */
+.hero{
+  min-height:100vh;min-height:100svh;
+  display:grid;place-items:center;text-align:center;
+  padding:110px 0 70px;overflow:hidden;isolation:isolate;
+}
+.hero::before{
+  content:"";position:absolute;inset:-25%;z-index:-2;
+  background:
+    radial-gradient(circle at 28% 28%, rgba(224,178,92,.20), transparent 42%),
+    radial-gradient(circle at 74% 58%, rgba(124,92,255,.16), transparent 44%),
+    radial-gradient(circle at 50% 96%, rgba(79,209,197,.10), transparent 46%);
+  animation:drift 20s ease-in-out infinite alternate;
+  will-change:transform;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background-image:
+    linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(circle at 50% 45%,#000 10%,transparent 72%);
+  mask-image:radial-gradient(circle at 50% 45%,#000 10%,transparent 72%);
+}
+@keyframes drift{to{transform:translate3d(0,-34px,0) scale(1.06)}}
 
-  /* EXHIBITS */
-  .exhibits { background: var(--light); }
-  .exhibit-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-  }
-  .card {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    transition: 0.4s;
-    cursor: pointer;
-  }
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  }
-  .card-img {
-    height: 220px;
-    background-size: cover;
-    background-position: center;
-    transition: 0.5s;
-  }
-  .card:hover .card-img { transform: scale(1.05); }
-  .card-img-wrapper { overflow: hidden; }
-  .card-body { padding: 25px; }
-  .card-body h3 { font-size: 20px; margin-bottom: 10px; }
-  .card-body p { font-size: 14px; color: #666; font-family: Arial, sans-serif; }
-  .card-tag {
-    display: inline-block;
-    padding: 4px 12px;
-    background: var(--accent);
-    color: var(--dark);
-    font-size: 11px;
-    font-family: Arial, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 3px;
-    margin-bottom: 12px;
-    font-weight: bold;
-  }
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.42rem .9rem;border-radius:999px;
+  border:1px solid rgba(224,178,92,.35);
+  background:rgba(224,178,92,.08);
+  font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.6rem;
+}
+.hero h1{
+  font-size:clamp(2.3rem,9.5vw,5.2rem);
+  line-height:1.02;letter-spacing:-.04em;font-weight:900;
+  margin-bottom:1.1rem;
+}
+.hero h1 span{
+  background:linear-gradient(120deg,var(--gold2),var(--gold) 55%,#b8862f);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{
+  color:var(--muted);font-size:clamp(.98rem,3vw,1.18rem);
+  max-width:52ch;margin:0 auto 2.2rem;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.85rem 1.6rem;border-radius:999px;font-weight:700;font-size:.95rem;
+  transition:transform .2s,box-shadow .25s,background .25s,border-color .25s;
+  will-change:transform;
+}
+.btn-primary{
+  background:linear-gradient(145deg,var(--gold2),var(--gold));
+  color:#0b0b10;box-shadow:0 10px 28px -12px rgba(224,178,92,.85);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(224,178,92,.95)}
+.btn-ghost{border:1px solid var(--line);color:var(--txt);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:rgba(224,178,92,.5);background:rgba(224,178,92,.08)}
+.btn:active{transform:translateY(0) scale(.98)}
 
-  /* EVENTS */
-  .events { background: var(--primary); color: white; }
-  .events .section-title, .events h3 { color: white; }
-  .events .section-subtitle { color: rgba(255,255,255,0.8); }
-  .event-list {
-    display: flex; flex-direction: column; gap: 20px;
-    max-width: 900px; margin: 0 auto;
-  }
-  .event {
-    display: flex; gap: 25px; align-items: center;
-    padding: 25px;
-    background: rgba(255,255,255,0.08);
-    border-left: 4px solid var(--accent);
-    border-radius: 4px;
-    transition: 0.3s;
-  }
-  .event:hover {
-    background: rgba(255,255,255,0.15);
-    transform: translateX(10px);
-  }
-  .event-date {
-    min-width: 80px;
-    text-align: center;
-    padding: 15px;
-    background: var(--accent);
-    color: var(--dark);
-    border-radius: 4px;
-    font-family: Arial, sans-serif;
-  }
-  .event-date .day { font-size: 28px; font-weight: bold; }
-  .event-date .month { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
-  .event-info h3 { font-size: 20px; margin-bottom: 5px; }
-  .event-info p { color: rgba(255,255,255,0.7); font-size: 14px; font-family: Arial, sans-serif; }
+.scroll-hint{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  color:var(--muted);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+}
+.scroll-hint::after{
+  content:"";width:1px;height:34px;
+  background:linear-gradient(var(--gold),transparent);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
 
-  /* CONTACT */
-  .contact { background: white; }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-  }
-  .contact-info h3 { font-size: 24px; margin-bottom: 25px; }
-  .contact-item {
-    display: flex; gap: 15px; align-items: flex-start;
-    margin-bottom: 25px;
-    font-family: Arial, sans-serif;
-  }
-  .contact-icon {
-    width: 45px; height: 45px; min-width: 45px;
-    background: var(--light);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    color: var(--accent);
-  }
-  .contact-item strong { display: block; color: var(--primary); margin-bottom: 3px; }
-  .contact-form input, .contact-form textarea {
-    width: 100%; padding: 15px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    background: var(--light);
-    transition: 0.3s;
-  }
-  .contact-form input:focus, .contact-form textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-    background: white;
-  }
-  .contact-form textarea { resize: vertical; min-height: 120px; }
-  .contact-form button {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 14px;
-  }
-  .contact-form button:hover {
-    background: var(--accent);
-    color: var(--dark);
-    transform: translateY(-2px);
-  }
+/* ============ О МУЗЕЕ ============ */
+.about-grid{
+  display:grid;gap:clamp(2rem,5vw,3.5rem);
+  grid-template-columns:1fr;
+  align-items:start;
+}
+@media(min-width:860px){.about-grid{grid-template-columns:1.05fr .95fr}}
+.about-text p+p{margin-top:1rem}
+.about-text p{color:var(--muted)}
+.about-text strong{color:var(--txt);font-weight:700}
 
-  /* FOOTER */
-  footer {
-    background: var(--dark);
-    color: rgba(255,255,255,0.7);
-    padding: 40px 20px;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-  }
-  footer .domain {
-    color: var(--accent);
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-top: 10px;
-    display: inline-block;
-  }
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem}
+.stat{
+  background:linear-gradient(160deg,var(--card),var(--bg2));
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:1.35rem 1.1rem;position:relative;overflow:hidden;
+}
+.stat::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 100% 0%,rgba(224,178,92,.16),transparent 60%);
+  pointer-events:none;
+}
+.stat-num{
+  font-size:clamp(1.7rem,6vw,2.35rem);font-weight:900;letter-spacing:-.03em;
+  color:var(--gold);line-height:1;
+}
+.stat-label{font-size:.8rem;color:var(--muted);margin-top:.45rem;line-height:1.35}
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 0.8s ease;
-  }
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ============ ЭКСПОНАТЫ ============ */
+.cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{
+  background:linear-gradient(170deg,var(--card),var(--bg2));
+  border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;
+  will-change:transform;
+}
+.card:hover{transform:translateY(-5px);border-color:rgba(224,178,92,.4);box-shadow:0 20px 40px -24px rgba(0,0,0,.9)}
+.card-visual{
+  aspect-ratio:16/10;display:grid;place-items:center;
+  font-size:clamp(2.6rem,9vw,3.6rem);position:relative;overflow:hidden;
+}
+.card-visual::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,11,16,.85),transparent 62%);
+}
+.card-visual > span{position:relative;z-index:1;filter:drop-shadow(0 8px 20px rgba(0,0,0,.5))}
+.v1{background:linear-gradient(135deg,#2a2033,#4a2f1e)}
+.v2{background:linear-gradient(135deg,#1b2740,#2c1f45)}
+.v3{background:linear-gradient(135deg,#2d1f1a,#1d2f2b)}
+.v4{background:linear-gradient(135deg,#1f2b3d,#3a2130)}
+.v5{background:linear-gradient(135deg,#33261a,#22303a)}
+.v6{background:linear-gradient(135deg,#231b33,#2b3a2a)}
 
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav ul { display: none; }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-    .about-image { box-shadow: 10px 10px 0 var(--accent); }
-    section { padding: 70px 20px; }
+.card-body{padding:1.15rem 1.2rem 1.35rem}
+.card-tag{
+  display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.card-body h3{font-size:1.06rem;font-weight:700;letter-spacing:-.01em;margin-bottom:.4rem}
+.card-body p{font-size:.88rem;color:var(--muted);line-height:1.55}
+
+/* ============ ИСТОРИЯ ============ */
+.tl{position:relative;display:grid;gap:26px;margin-top:2.4rem}
+.tl::before{
+  content:"";position:absolute;left:15px;top:4px;bottom:4px;width:2px;
+  background:linear-gradient(180deg,var(--gold),rgba(224,178,92,.05));
+  border-radius:2px;
+}
+.tl-item{position:relative;padding-left:50px}
+.tl-item::before{
+  content:"";position:absolute;left:8px;top:7px;width:16px;height:16px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--gold);
+  box-shadow:0 0 0 4px rgba(224,178,92,.13);
+}
+.tl-year{
+  font-size:.78rem;font-weight:800;letter-spacing:.14em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:.3rem;
+}
+.tl-item h3{font-size:1.05rem;font-weight:700;margin-bottom:.3rem}
+.tl-item p{font-size:.9rem;color:var(--muted)}
+
+@media(min-width:820px){
+  .tl::before{left:50%;transform:translateX(-50%)}
+  .tl-item{width:50%;padding-left:0;padding-right:52px;text-align:right}
+  .tl-item::before{left:auto;right:-9px;top:8px}
+  .tl-item:nth-child(even){margin-left:50%;padding-right:0;padding-left:52px;text-align:left}
+  .tl-item:nth-child(even)::before{right:auto;left:-9px}
+}
+
+/* ============ ГАЛЕРЕЯ ============ */
+.gallery{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.g-item{
+  position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;
+  border:1px solid var(--line);display:grid;place-items:center;
+  font-size:clamp(2rem,7vw,2.8rem);transition:transform .3s,box-shadow .3s;
+  will-change:transform;
+}
+.g-item::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,11,16,.8),transparent 65%);
+  opacity:.9;transition:opacity .3s;
+}
+.g-item:hover{transform:scale(1.035);box-shadow:0 18px 36px -18px #000}
+.g-item:hover::after{opacity:.55}
+.g-item .g-cap{
+  position:absolute;left:0;right:0;bottom:0;z-index:1;
+  padding:.6rem .7rem;font-size:.72rem;font-weight:600;color:#fff;
+  text-align:left;line-height:1.3;
+}
+
+/* Лайтбокс */
+.lb{
+  position:fixed;inset:0;z-index:200;display:none;
+  background:rgba(6,6,10,.94);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  place-items:center;padding:1.5rem;
+}
+.lb.open{display:grid;animation:fade .25s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.lb-inner{text-align:center;max-width:520px;width:100%}
+.lb-visual{
+  width:100%;aspect-ratio:1;border-radius:20px;
+  display:grid;place-items:center;font-size:clamp(4rem,20vw,7rem);
+  border:1px solid rgba(255,255,255,.14);
+}
+.lb-cap{margin-top:1rem;font-size:.92rem;color:var(--muted)}
+.lb-close{
+  position:absolute;top:calc(14px + env(safe-area-inset-top));right:14px;
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,.08);border:1px solid var(--line);
+  display:grid;place-items:center;font-size:1.6rem;line-height:1;
+  transition:background .2s,transform .2s;
+}
+.lb-close:hover{background:rgba(255,255,255,.16);transform:rotate(90deg)}
+
+/* ============ ПОСЕЩЕНИЕ ============ */
+.visit-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.visit-card{
+  background:linear-gradient(170deg,var(--card),var(--bg2));
+  border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem 1.4rem;
+}
+.visit-card .ic{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  background:rgba(224,178,92,.12);border:1px solid rgba(224,178,92,.3);
+  font-size:1.2rem;margin-bottom:.9rem;
+}
+.visit-card h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);margin-bottom:.5rem}
+.visit-card p,.visit-card a{font-size:.95rem;color:var(--txt);display:block}
+.visit-card a:hover{color:var(--gold)}
+.visit-card small{color:var(--muted);font-size:.82rem;display:block;margin-top:.3rem}
+
+/* ============ CTA ============ */
+.cta{
+  margin-top:2.5rem;border-radius:24px;padding:clamp(2rem,6vw,3.4rem);
+  text-align:center;position:relative;overflow:hidden;
+  background:linear-gradient(150deg,#1c1608,#141420 55%,#101024);
+  border:1px solid rgba(224,178,92,.28);
+}
+.cta::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(224,178,92,.22),transparent 62%);
+  pointer-events:none;
+}
+.cta h2{font-size:clamp(1.5rem,5vw,2.3rem);font-weight:800;letter-spacing:-.025em;margin-bottom:.6rem;position:relative}
+.cta p{color:var(--muted);margin-bottom:1.6rem;position:relative}
+.cta .btn{position:relative}
+
+/* ============ ПОДВАЛ ============ */
+footer{
+  border-top:1px solid var(--line);
+  padding:2.5rem 0 calc(2rem + env(safe-area-inset-bottom));
+  color:var(--muted);font-size:.87rem;
+}
+.foot-in{display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:space-between;align-items:center}
+.foot-links{display:flex;flex-wrap:wrap;gap:1rem}
+.foot-links a:hover{color:var(--gold)}
+
+/* ============ АНИМАЦИИ ПОЯВЛЕНИЯ ============ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal:nth-child(2){transition-delay:.07s}
+.reveal:nth-child(3){transition-delay:.14s}
+.reveal:nth-child(4){transition-delay:.21s}
+.reveal:nth-child(5){transition-delay:.28s}
+.reveal:nth-child(6){transition-delay:.35s}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* ============ МОБИЛЬНОЕ МЕНЮ ============ */
+@media(max-width:860px){
+  .burger{display:flex}
+  .nav-links{
+    position:fixed;inset:0;z-index:1;
+    background:#0b0b10;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;
+    transform:translateX(100%);
+    transition:transform .36s cubic-bezier(.4,0,.2,1);
+    will-change:transform;
   }
-  @media (max-width: 600px) {
-    .stats { grid-template-columns: 1fr; }
-    .event { flex-direction: column; text-align: center; }
-    .btn-outline { margin-left: 0; margin-top: 10px; display: block; width: fit-content; margin-inline: auto; }
-  }
+  .nav-links.open{transform:none}
+  .nav-links a{font-size:1.45rem;font-weight:700;padding:.75rem 1.6rem;color:var(--txt)}
+  .nav-links .nav-cta{margin:.9rem 0 0;font-size:1rem;padding:.75rem 1.8rem;color:#0b0b10}
+  .logo-txt{font-size:.9rem}
+}
+@media(max-width:380px){
+  .wrap{width:calc(100% - 1.6rem)}
+  .stats{grid-template-columns:1fr}
+}
 </style>
 </head>
-<body>
+<body id="top">
 
-<!-- HEADER -->
-<header>
-  <div class="nav-container">
-    <div class="logo">
-      <div class="logo-icon">🏛</div>
-      <div>Музей Лицея №84</div>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#about">О музее</a></li>
-        <li><a href="#exhibits">Экспонаты</a></li>
-        <li><a href="#events">События</a></li>
-        <li><a href="#contact">Контакты</a></li>
-      </ul>
-    </nav>
+<!-- ================= НАВИГАЦИЯ ================= -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top">
+      <span class="logo-mark">84</span>
+      <span class="logo-txt">Музей лицея</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">О музее</a></li>
+      <li><a href="#exhibits">Экспонаты</a></li>
+      <li><a href="#history">История</a></li>
+      <li><a href="#gallery">Галерея</a></li>
+      <li><a href="#visit">Посещение</a></li>
+      <li><a href="#visit" class="nav-cta">Экскурсия</a></li>
+    </ul>
   </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <span class="hero-badge">Виртуальный музей</span>
+    <h1>Музей<br><span>Лицея №84</span></h1>
+    <p>Живая история школы: экспонаты, архивные фотографии, награды и судьбы выпускников — в одном месте.</p>
+    <div class="hero-actions">
+      <a href="#exhibits" class="btn btn-primary">Смотреть экспонаты →</a>
+      <a href="#visit" class="btn btn-ghost">Записаться на экскурсию</a>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">Листайте</div>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Музей Лицея №84</h1>
-    <p>Хранитель истории, традиций и достижений нашего учебного заведения</p>
-    <a href="#about" class="btn">Узнать больше</a>
-    <a href="#exhibits" class="btn btn-outline">Экспонаты</a>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="container">
-    <h2 class="section-title reveal">О нашем музее</h2>
-    <p class="section-subtitle reveal">Мы бережно храним память о прошлом и вдохновляем будущие поколения</p>
-    <div class="about-grid">
-      <div class="about-image reveal"></div>
-      <div class="about-text reveal">
-        <h3>История и наследие</h3>
-        <p>Музей Лицея №84 был основан благодаря усилиям педагогов, учеников и выпускников, желающих сохранить богатую историю нашего учебного заведения.</p>
-        <p>В экспозиции представлены архивные документы, фотографии разных лет, награды, личные вещи выдающихся выпускников и учителей, а также предметы, связанные с ключевыми событиями в жизни лицея.</p>
-        <p>Музей — это живое пространство, где проходят экскурсии, встречи с выпускниками, тематические выставки и исследовательские проекты школьников.</p>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-num">500+</div>
-            <div class="stat-label">Экспонатов</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">40</div>
-            <div class="stat-label">Лет истории</div>
-          </div>
-          <div class="stat">
-            <div class="stat-num">1000+</div>
-            <div class="stat-label">Посетителей</div>
-          </div>
-        </div>
+<!-- ================= О МУЗЕЕ ================= -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-text reveal">
+      <span class="eyebrow">О музее</span>
+      <h2 class="h2">Память, которую <em>можно потрогать</em></h2>
+      <p>Музей Лицея №84 — это не пыльные витрины, а живое пространство. Здесь <strong>каждый экспонат</strong> хранит историю конкретного человека: учителя, выпускника, директора.</p>
+      <p>Мы собираем документы, фотографии, награды и личные вещи, чтобы прошлое школы оставалось частью настоящего. Экспозиция постоянно пополняется благодаря выпускникам и их семьям.</p>
+      <p>Экскурсии проводят сами лицеисты — так история передаётся из рук в руки.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat">
+        <div class="stat-num" data-count="35">0</div>
+        <div class="stat-label">лет истории лицея</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-count="5000" data-suffix="+">0</div>
+        <div class="stat-label">выпускников</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-count="300" data-suffix="+">0</div>
+        <div class="stat-label">экспонатов в фонде</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" data-count="12">0</div>
+        <div class="stat-label">тематических стендов</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXHIBITS -->
-<section class="exhibits" id="exhibits">
-  <div class="container">
-    <h2 class="section-title reveal">Экспозиции</h2>
-    <p class="section-subtitle reveal">Познакомьтесь с ключевыми разделами нашего музея</p>
-    <div class="exhibit-grid">
-      <div class="card reveal">
-        <div class="card-img-wrapper">
-          <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1568667256549-094345857637?w=600')"></div>
-        </div>
+<!-- ================= ЭКСПОНАТЫ ================= -->
+<section id="exhibits">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Экспозиция</span>
+      <h2 class="h2">Главные <em>экспонаты</em></h2>
+      <p class="lead" style="margin-bottom:2.2rem">Шесть историй, с которых начинается знакомство с музеем.</p>
+    </div>
+    <div class="cards">
+
+      <article class="card reveal">
+        <div class="card-visual v1"><span>🏛️</span></div>
         <div class="card-body">
-          <span class="card-tag">История</span>
-          <h3>Страницы прошлого</h3>
-          <p>Архивные документы, фотографии и реликвии, рассказывающие об истории лицея с момента основания.</p>
+          <span class="card-tag">Реликвия</span>
+          <h3>Знамя лицея</h3>
+          <p>Официальное знамя, вручённое учреждению. Символ, под которым проходят все линейки и выпускные.</p>
         </div>
-      </div>
-      <div class="card reveal">
-        <div class="card-img-wrapper">
-          <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?w=600')"></div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-visual v2"><span>📜</span></div>
+        <div class="card-body">
+          <span class="card-tag">Документы</span>
+          <h3>Архив первых лет</h3>
+          <p>Приказы, журналы и тетради учеников — свидетельства первых десятилетий работы школы.</p>
         </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-visual v3"><span>🏆</span></div>
         <div class="card-body">
           <span class="card-tag">Достижения</span>
-          <h3>Наши звёзды</h3>
-          <p>Награды, кубки и грамоты учеников и педагогов — гордость лицея на разных уровнях.</p>
+          <h3>Кубки и награды</h3>
+          <p>Спортивные и олимпиадные трофеи лицеистов разных лет — от грамот до переходящих кубков.</p>
         </div>
-      </div>
-      <div class="card reveal">
-        <div class="card-img-wrapper">
-          <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600')"></div>
-        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-visual v4"><span>📷</span></div>
         <div class="card-body">
-          <span class="card-tag">Творчество</span>
-          <h3>Ученические работы</h3>
-          <p>Рисунки, поделки, проекты и исследования, созданные руками наших талантливых учеников.</p>
+          <span class="card-tag">Фотоархив</span>
+          <h3>Выпуски прошлых лет</h3>
+          <p>Сотни групповых снимков и портретов. Можно найти себя, родителей или даже бабушку с дедушкой.</p>
         </div>
-      </div>
-      <div class="card reveal">
-        <div class="card-img-wrapper">
-          <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600')"></div>
-        </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-visual v5"><span>🎒</span></div>
         <div class="card-body">
-          <span class="card-tag">Память</span>
-          <h3>Ветераны и выпускники</h3>
-          <p>Личные вещи, письма и воспоминания выпускников, внёсших значительный вклад в историю.</p>
+          <span class="card-tag">Быт</span>
+          <h3>Школьные вещи</h3>
+          <p>Парта, перьевая ручка, старый дневник и галстук — предметы, знакомые каждому поколению.</p>
         </div>
+      </article>
+
+      <article class="card reveal">
+        <div class="card-visual v6"><span>📰</span></div>
+        <div class="card-body">
+          <span class="card-tag">Пресса</span>
+          <h3>Лицейская газета</h3>
+          <p>Подшивка школьных изданий разных лет: заметки, интервью и рисунки самих учеников.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= ИСТОРИЯ ================= -->
+<section id="history">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Хронология</span>
+      <h2 class="h2">История <em>шаг за шагом</em></h2>
+      <p class="lead">Ключевые точки в жизни школы и лицея.</p>
+    </div>
+
+    <div class="tl">
+      <div class="tl-item reveal">
+        <div class="tl-year">1965</div>
+        <h3>Открытие школы</h3>
+        <p>Первый звонок и первый набор учеников. Здание приняло ребят из окрестных домов.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">1980-е</div>
+        <h3>Первые традиции</h3>
+        <p>Появляются школьный музей, спортивные секции и ежегодные слёты выпускников.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2001</div>
+        <h3>Статус лицея</h3>
+        <p>Школа получает статус лицея и открывает профильные классы с углублённым изучением предметов.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2010-е</div>
+        <h3>Победы и олимпиады</h3>
+        <p>Лицеисты регулярно становятся призёрами городских и всероссийских олимпиад.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">Сегодня</div>
+        <h3>Музей обновляется</h3>
+        <p>Экспозиция переезжает в новое пространство: интерактивные стенды, цифровой архив и экскурсии от учеников.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EVENTS -->
-<section class="events" id="events">
-  <div class="container">
-    <h2 class="section-title reveal">Ближайшие события</h2>
-    <p class="section-subtitle reveal">Экскурсии, встречи и выставки, которые ждут вас</p>
-    <div class="event-list">
-      <div class="event reveal">
-        <div class="event-date">
-          <div class="day">15</div>
-          <div class="month">Май</div>
-        </div>
-        <div class="event-info">
-          <h3>День открытых дверей музея</h3>
-          <p>Приглашаем всех желающих познакомиться с обновлённой экспозицией</p>
-        </div>
-      </div>
-      <div class="event reveal">
-        <div class="event-date">
-          <div class="day">22</div>
-          <div class="month">Май</div>
-        </div>
-        <div class="event-info">
-          <h3>Встреча с выпускниками</h3>
-          <p>Тёплый вечер воспоминаний и общения поколений лицеистов</p>
-        </div>
-      </div>
-      <div class="event reveal">
-        <div class="event-date">
-          <div class="day">01</div>
-          <div class="month">Июнь</div>
-        </div>
-        <div class="event-info">
-          <h3>Выставка «Таланты лицея»</h3>
-          <p>Работы учеников в области искусства, науки и техники</p>
-        </div>
-      </div>
+<!-- ================= ГАЛЕРЕЯ ================= -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Галерея</span>
+      <h2 class="h2">Смотрим <em>ближе</em></h2>
+      <p class="lead" style="margin-bottom:2rem">Нажмите на любой кадр, чтобы рассмотреть его крупнее.</p>
+    </div>
+
+    <div class="gallery">
+      <button class="g-item v1" data-cap="Знамя лицея" data-emoji="🏛️">
+        <span>🏛️</span><span class="g-cap">Знамя лицея</span>
+      </button>
+      <button class="g-item v2" data-cap="Архивные документы" data-emoji="📜">
+        <span>📜</span><span class="g-cap">Архивные документы</span>
+      </button>
+      <button class="g-item v3" data-cap="Награды и кубки" data-emoji="🏆">
+        <span>🏆</span><span class="g-cap">Награды и кубки</span>
+      </button>
+      <button class="g-item v4" data-cap="Фотографии выпусков" data-emoji="📷">
+        <span>📷</span><span class="g-cap">Фотографии выпусков</span>
+      </button>
+      <button class="g-item v5" data-cap="Школьные вещи" data-emoji="🎒">
+        <span>🎒</span><span class="g-cap">Школьные вещи</span>
+      </button>
+      <button class="g-item v6" data-cap="Лицейская газета" data-emoji="📰">
+        <span>📰</span><span class="g-cap">Лицейская газета</span>
+      </button>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="container">
-    <h2 class="section-title reveal">Свяжитесь с нами</h2>
-    <p class="section-subtitle reveal">Запишитесь на экскурсию или задайте вопрос</p>
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <h3>Контакты музея</h3>
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div>
-            <strong>Адрес</strong>
-            г. Лицей, ул. Школьная, д. 84
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          <div>
-            <strong>Телефон</strong>
-            +7 (000) 000-00-00
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">✉️</div>
-          <div>
-            <strong>Email</strong>
-            info@lycey84muzey.ru
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">🕐</div>
-          <div>
-            <strong>Часы работы</strong>
-            Пн–Пт: 9:00–17:00
-          </div>
-        </div>
+<!-- ================= ПОСЕЩЕНИЕ ================= -->
+<section id="visit">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Посещение</span>
+      <h2 class="h2">Как нас <em>найти</em></h2>
+      <p class="lead" style="margin-bottom:2rem">Экскурсии бесплатные, но лучше записаться заранее.</p>
+    </div>
+
+    <div class="visit-grid">
+      <div class="visit-card reveal">
+        <div class="ic">📍</div>
+        <h3>Адрес</h3>
+        <p>Лицей №84</p>
+        <small>г. Ваш город, ул. Школьная, 84</small>
       </div>
-      <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Спасибо! Ваше сообщение отправлено.'); this.reset();">
-        <input type="text" placeholder="Ваше имя" required>
-        <input type="email" placeholder="Email" required>
-        <input type="text" placeholder="Тема">
-        <textarea placeholder="Ваше сообщение" required></textarea>
-        <button type="submit">Отправить</button>
-      </form>
+      <div class="visit-card reveal">
+        <div class="ic">🕘</div>
+        <h3>Часы работы</h3>
+        <p>Пн – Пт: 09:00 – 17:00</p>
+        <small>Сб: по предварительной записи</small>
+      </div>
+      <div class="visit-card reveal">
+        <div class="ic">✉️</div>
+        <h3>Связаться</h3>
+        <a href="tel:+70000000084">+7 (000) 000-00-84</a>
+        <a href="mailto:museum@licey84.ru">museum@licey84.ru</a>
+      </div>
+      <div class="visit-card reveal">
+        <div class="ic">👥</div>
+        <h3>Экскурсии</h3>
+        <p>Группы до 25 человек</p>
+        <small>Проводят лицеисты-экскурсоводы</small>
+      </div>
+    </div>
+
+    <div class="cta reveal">
+      <h2>Хотите провести экскурсию или передать экспонат?</h2>
+      <p>Напишите нам — мы бережно сохраним историю вместе.</p>
+      <a href="mailto:museum@licey84.ru" class="btn btn-primary">Написать в музей →</a>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ================= ПОДВАЛ ================= -->
 <footer>
-  <div>© 2025 Музей Лицея №84. Все права защищены.</div>
-  <div class="domain">lycey84muzey.ru</div>
+  <div class="wrap foot-in">
+    <div>© <span id="year">2025</span> Музей Лицея №84</div>
+    <div class="foot-links">
+      <a href="#about">О музее</a>
+      <a href="#exhibits">Экспонаты</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#visit">Контакты</a>
+    </div>
+  </div>
 </footer>
 
+<!-- ================= ЛАЙТБОКС ================= -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
+  <button class="lb-close" id="lbClose" aria-label="Закрыть">×</button>
+  <div class="lb-inner">
+    <div class="lb-visual" id="lbVisual"></div>
+    <p class="lb-cap" id="lbCap"></p>
+  </div>
+</div>
+
 <script>
-  // Reveal-анимация при скролле
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('active'), i * 100);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
+(function () {
+  "use strict";
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  /* ---------- Год в подвале ---------- */
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Плавный скролл
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-      }
-    });
+  /* ---------- Состояние навигации при скролле ---------- */
+  var nav = document.getElementById("nav");
+  var ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(function () {
+        nav.classList.toggle("scrolled", window.scrollY > 8);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Мобильное меню ---------- */
+  var burger = document.getElementById("burger");
+  var links = document.getElementById("navLinks");
+
+  function closeMenu() {
+    links.classList.remove("open");
+    burger.classList.remove("active");
+    burger.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  burger.addEventListener("click", function () {
+    var open = links.classList.toggle("open");
+    burger.classList.toggle("active", open);
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    document.body.style.overflow = open ? "hidden" : "";
   });
+
+  links.addEventListener("click", function (e) {
+    if (e.target.closest("a")) closeMenu();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { closeMenu(); closeLightbox(); }
+  });
+
+  /* ---------- Появление секций ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.1 });
+
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---------- Счётчики ---------- */
+  function animateCount(el) {
+    var target = parseInt(el.dataset.count, 10);
+    var suffix = el.dataset.suffix || "";
+    var dur = 1400, start = null;
+
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased).toLocaleString("ru-RU") + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  var counters = document.querySelectorAll(".stat-num");
+  if ("IntersectionObserver" in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          cio.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (c) { cio.observe(c); });
+  } else {
+    counters.forEach(function (c) {
+      c.textContent = c.dataset.count + (c.dataset.suffix || "");
+    });
+  }
+
+  /* ---------- Лайтбокс ---------- */
+  var lb = document.getElementById("lb");
+  var lbVisual = document.getElementById("lbVisual");
+  var lbCap = document.getElementById("lbCap");
+  var lbClose = document.getElementById("lbClose");
+
+  function openLightbox(item) {
+    var cls = item.className.split(" ").filter(function (c) {
+      return /^v[1-6]$/.test(c);
+    }).join(" ");
+
+    lbVisual.className = "lb-visual " + cls;
+    lbVisual.textContent = item.dataset.emoji;
+    lbCap.textContent = item.dataset.cap;
+    lb.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeLightbox() {
+    lb.classList.remove("open");
+    if (!links.classList.contains("open")) document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll(".g-item").forEach(function (item) {
+    item.addEventListener("click", function () { openLightbox(item); });
+  });
+
+  lbClose.addEventListener("click", closeLightbox);
+  lb.addEventListener("click", function (e) {
+    if (e.target === lb) closeLightbox();
+  });
+})();
 </script>
 </body>
-</html>
+</html>****
