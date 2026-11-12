@@ -1,11 +1,20 @@
-<!DOCTYPE html>
 <html lang="ru">
-<head>
+<head> 
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Музей Лицея №84 — lycey84muzey</title>
 <meta name="description" content="Виртуальный музей Лицея №84: экспонаты">
 <style>
+      @media (max-width: 900px) {
+  nav ul { display: none; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  section { padding: 70px 20px; }
+}
+@media (max-width: 600px) {
+  .stats { grid-template-columns: 1fr; }
+  .event { flex-direction: column; text-align: center; }
+}
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --primary: #1e3a5f;
