@@ -413,7 +413,7 @@ footer{
       <a href="#visit" class="btn btn-ghost">Записаться на экскурсию</a>
     </div>
   </div>
-  <div class="scroll-hint" aria-hidden="true">Листайте</div>
+  
 </header>
 
 <!-- ================= О МУЗЕЕ ================= -->
@@ -453,16 +453,16 @@ footer{
     <div class="reveal">
       <span class="eyebrow">Экспозиция</span>
       <h2 class="h2">Главные <em>экспонаты</em></h2>
-      <p class="lead" style="margin-bottom:2.2rem">Шесть историй, с которых начинается знакомство с музеем.</p>
+      <p class="lead" style="margin-bottom:2.2rem">Как жил лицей — и как живёт</p>
     </div>
     <div class="cards">
 
       <article class="card reveal">
-        <div class="card-visual v1"><span>🏛️</span></div>
+        <div class="card-visual v1"><span>👩‍🏫</span></div>
         <div class="card-body">
-          <span class="card-tag">Реликвия</span>
-          <h3>Знамя лицея</h3>
-          <p>Официальное знамя, вручённое учреждению. Символ, под которым проходят все линейки и выпускные.</p>
+          <span class="card-tag">Преподаватели</span>
+          <h3>Учителя, не дающие лицею опуститься в рейтинге📈</h3>
+          <p>Те, кто дал перспективное будущее ученикам и продолжает это делать по сей день.</p>
         </div>
       </article>
 
@@ -485,31 +485,14 @@ footer{
       </article>
 
       <article class="card reveal">
-        <div class="card-visual v4"><span>📷</span></div>
+        <div class="card-visual v4"><span>🧑‍🎓</span></div>
         <div class="card-body">
           <span class="card-tag">Фотоархив</span>
-          <h3>Выпуски прошлых лет</h3>
-          <p>Сотни групповых снимков и портретов. Можно найти себя, родителей или даже бабушку с дедушкой.</p>
+          <h3>Выпускники прошлых лет</h3>
+          <p>Сотни групповых снимков и портретов выдающихся учеников прошлых лет. Можно найти себя, родителей или даже бабушку с дедушкой.</p>
         </div>
       </article>
 
-      <article class="card reveal">
-        <div class="card-visual v5"><span>🎒</span></div>
-        <div class="card-body">
-          <span class="card-tag">Быт</span>
-          <h3>Школьные вещи</h3>
-          <p>Парта, перьевая ручка, старый дневник и галстук — предметы, знакомые каждому поколению.</p>
-        </div>
-      </article>
-
-      <article class="card reveal">
-        <div class="card-visual v6"><span>📰</span></div>
-        <div class="card-body">
-          <span class="card-tag">Пресса</span>
-          <h3>Лицейская газета</h3>
-          <p>Подшивка школьных изданий разных лет: заметки, интервью и рисунки самих учеников.</p>
-        </div>
-      </article>
 
     </div>
   </div>
@@ -526,65 +509,34 @@ footer{
 
     <div class="tl">
       <div class="tl-item reveal">
-        <div class="tl-year">1965</div>
+        <div class="tl-year">1991</div>
         <h3>Открытие школы</h3>
         <p>Первый звонок и первый набор учеников. Здание приняло ребят из окрестных домов.</p>
       </div>
       <div class="tl-item reveal">
-        <div class="tl-year">1980-е</div>
+        <div class="tl-year">1991 - 1992</div>
         <h3>Первые традиции</h3>
-        <p>Появляются школьный музей, спортивные секции и ежегодные слёты выпускников.</p>
+        <p>Появляются турслеты, дополнительные кружки:"рампа", шахматы, литературный кружок, театральный кружок</p>
       </div>
       <div class="tl-item reveal">
-        <div class="tl-year">2001</div>
+        <div class="tl-year">2000</div>
         <h3>Статус лицея</h3>
-        <p>Школа получает статус лицея и открывает профильные классы с углублённым изучением предметов.</p>
+        <p>Лицей стал самой сильной школой в городе куда стремятся попать самые конкурентоспособные ученики.</p>
       </div>
       <div class="tl-item reveal">
-        <div class="tl-year">2010-е</div>
+        <div class="tl-year">2000 - наши дни</div>
         <h3>Победы и олимпиады</h3>
         <p>Лицеисты регулярно становятся призёрами городских и всероссийских олимпиад.</p>
       </div>
       <div class="tl-item reveal">
         <div class="tl-year">Сегодня</div>
         <h3>Музей обновляется</h3>
-        <p>Экспозиция переезжает в новое пространство: интерактивные стенды, цифровой архив и экскурсии от учеников.</p>
+        <p>Экспозиция расширяет свой функционал ,становиться не только физической точкой в лицее , но и заселяет цифровой архив</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= ГАЛЕРЕЯ ================= -->
-<section id="gallery">
-  <div class="wrap">
-    <div class="reveal">
-      <span class="eyebrow">Галерея</span>
-      <h2 class="h2">Смотрим <em>ближе</em></h2>
-      <p class="lead" style="margin-bottom:2rem">Нажмите на любой кадр, чтобы рассмотреть его крупнее.</p>
-    </div>
-
-    <div class="gallery">
-      <button class="g-item v1" data-cap="Знамя лицея" data-emoji="🏛️">
-        <span>🏛️</span><span class="g-cap">Знамя лицея</span>
-      </button>
-      <button class="g-item v2" data-cap="Архивные документы" data-emoji="📜">
-        <span>📜</span><span class="g-cap">Архивные документы</span>
-      </button>
-      <button class="g-item v3" data-cap="Награды и кубки" data-emoji="🏆">
-        <span>🏆</span><span class="g-cap">Награды и кубки</span>
-      </button>
-      <button class="g-item v4" data-cap="Фотографии выпусков" data-emoji="📷">
-        <span>📷</span><span class="g-cap">Фотографии выпусков</span>
-      </button>
-      <button class="g-item v5" data-cap="Школьные вещи" data-emoji="🎒">
-        <span>🎒</span><span class="g-cap">Школьные вещи</span>
-      </button>
-      <button class="g-item v6" data-cap="Лицейская газета" data-emoji="📰">
-        <span>📰</span><span class="g-cap">Лицейская газета</span>
-      </button>
-    </div>
-  </div>
-</section>
 
 <!-- ================= ПОСЕЩЕНИЕ ================= -->
 <section id="visit">
@@ -785,4 +737,4 @@ footer{
 })();
 </script>
 </body>
-</html>****
+</html>
